@@ -89,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         index: pageIndex,
+        height: 55.0,
         color: Theme.of(context).accentColor,
         buttonBackgroundColor: Theme.of(context).primaryColor,
         backgroundColor: Colors.white,

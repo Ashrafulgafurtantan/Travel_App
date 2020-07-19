@@ -6,13 +6,14 @@ class HotelCarrole extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Column(
+
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Top Destinations",
+              Text("Exclusive Hotels",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,

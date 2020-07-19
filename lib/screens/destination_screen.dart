@@ -13,6 +13,16 @@ class DestinationScreen extends StatefulWidget {
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
+
+  buildRatingStart(int start){
+    String starStr="";
+    for(int i=0;i<start;i++){
+      starStr+="⭐ ";
+    }
+    return Text(starStr);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +30,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
         children: <Widget>[
           Stack(
             children: <Widget>[
-
               Container(
                 height: MediaQuery.of(context).size.width,
                 child: Hero(
@@ -117,6 +126,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
           Expanded(
 
             child: ListView.builder(
+              padding: EdgeInsets.only(top: 10,bottom: 20),
               scrollDirection: Axis.vertical,
               itemCount: widget.destination.activities.length,
               itemBuilder: (BuildContext context,int index){
@@ -130,6 +140,100 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(100, 20, 10, 20),
+                        child: Column(
+                          crossAxisAlignment:CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment:CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  width:120,
+                                  child: Text(activity.name,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                Column(
+                                  children: <Widget>[
+                                    Text("\$ ${activity.price}",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    Text("per pax",
+                                      style: TextStyle(
+                                       color: Colors.grey
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                              ],
+                            ),
+                            Text(activity.type,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey,
+
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            buildRatingStart(activity.rating),
+                            SizedBox(height: 10,),
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(5),
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).accentColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(activity.startTimes[0]),
+                                ),
+                                SizedBox(width: 10,),
+                                Container(
+                                  width: 70,
+                                  padding: EdgeInsets.all(5),
+
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).accentColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(activity.startTimes[1]),
+                                ),
+                              ],
+                            )
+
+                          ],
+                        ),
+                      ),
+                    ),
+                    
+                    Positioned(
+                      left:20,
+                      top:15,
+                      bottom:15,
+
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image(
+                          image: AssetImage(activity.imageUrl),
+                        width: 110,
+                        fit: BoxFit.cover,
+                        ),
                       ),
                     )
                   ],

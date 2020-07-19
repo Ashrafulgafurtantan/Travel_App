@@ -33,7 +33,6 @@ class DestinationCarrole extends StatelessWidget {
         ),
         Container(
           height: 300,
-
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: destinations.length,
@@ -80,8 +79,9 @@ class DestinationCarrole extends StatelessWidget {
                                     color: Colors.grey,
 
                                   ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-
                               ],
                             ),
                           ),
@@ -106,7 +106,7 @@ class DestinationCarrole extends StatelessWidget {
                               Hero(
                                 tag:destination.imageUrl,
                                 child: ClipRRect(
-                          borderRadius:BorderRadius.circular(20),
+                                    borderRadius:BorderRadius.circular(20),
                                   child: Image(
                                     image: AssetImage(destination.imageUrl),
                                     height: 180,
